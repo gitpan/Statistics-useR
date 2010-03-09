@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+useR.xs
+ppport.h
+README
+t/Statistics-useR.t
+lib/Statistics/useR.pm

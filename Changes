@@ -1,0 +1,7 @@
+Revision history for Perl extension Statistics::useR.
+
+0.01  Wed Mar  3 14:55:22 2010
+	- original version; created by h2xs 1.23 with options
+		-A -n Statistics::useR
+		Finished on Mar 8 2010
+
