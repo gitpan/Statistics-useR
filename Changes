@@ -5,3 +5,6 @@ Revision history for Perl extension Statistics::useR.
 		-A -n Statistics::useR
 		Finished on Mar 8 2010
 
+0.01_001 Fri Mar 12 11:33 2010
+	- Change Makefile.PL to avoid testing failure due to R dependencies.
+

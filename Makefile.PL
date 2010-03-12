@@ -2,6 +2,7 @@ use 5.010001;
 use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
+exit 0 unless defined $ENV{R_HOME};
 WriteMakefile(
     NAME              => 'Statistics::useR',
     VERSION_FROM      => 'lib/Statistics/useR.pm', # finds $VERSION
