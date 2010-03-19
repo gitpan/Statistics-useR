@@ -35,32 +35,36 @@ sub new {
 
 #check data type    
     while(my ($key, $val) = each %{$input->{'data'}}) {
-	for my $i (0..$#{$val}) {
-	    if(!defined $val->[$i]) {
-		if($i==$#{$val}) {
-		    push @{$type{'str'}}, $key;
-		    last; #If all data is undefined, assign 'str' type
-		}
-		next;} #Skip to check next data if undefined
-	    if($val->[$i] =~ /^\-?(?:[1-9]\d*\.\d+|0\.\d+)$/) {
-		push @{$type{'real'}}, $key;
-		last; #Is data 'real' type?
-	    }
-	    elsif($val->[$i] =~ /^-?[1-9]\d*$/) {		
-		push @{$type{'int'}}, $key;
-		last; #Is data 'int' type?
-	    }
-	    else {
-		push @{$type{'str'}}, $key;
-		last; #Assign 'str' type to other data
+	my $t1;
+	for (1..3) {
+	    my $i = int(rand($#{$val}));
+	    my $t2 = &getDataType($val->[$i]);
+	    if(!defined $t1 || $t1 lt $t2) {
+		$t1 = $t2;
 	    }
 	}
+	push @{$type{$t1}}, $key;
     }
 
     my $rdata = setvalue($input->{'data'}, \%type, $keyno);
 	insvar($rdata, $input->{'varname'});
 
     return $rdata;
+}
+
+sub getDataType {
+    if(!defined $_) {
+	return 'str';
+	}
+    if($_ =~ /^\-?(?:[1-9]\d*\.\d+|0\.\d+)$/) {
+	return 'real';
+    }
+    elsif($_ =~ /^-?[1-9]\d*$/) {
+	return 'int';
+    }
+    else {
+	return 'str';
+    }
 }
 
 1;
