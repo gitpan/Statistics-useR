@@ -53,13 +53,13 @@ sub new {
 }
 
 sub getDataType {
-    if(!defined $_) {
+    if(!defined $_[0]) {
 	return 'str';
 	}
-    if($_ =~ /^\-?(?:[1-9]\d*\.\d+|0\.\d+)$/) {
+    elsif($_[0] =~ /^\-?(?:[1-9]\d*\.\d+|0\.\d+)$/) {
 	return 'real';
     }
-    elsif($_ =~ /^-?[1-9]\d*$/) {
+    elsif($_[0] =~ /^-?[1-9]\d*$/) {
 	return 'int';
     }
     else {
