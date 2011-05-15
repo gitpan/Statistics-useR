@@ -13,3 +13,8 @@ Revision history for Perl extension Statistics::useR.
 
 0.01_003 Mon Mar 22 1:10 2010
 	- Improvement for data type check.
+
+0.1      Wed May 11 11:18 2011
+	- Add support for parallel analysis (multiple processes)
+	- Add some handy functions
+	- Update the documentation
