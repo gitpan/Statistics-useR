@@ -1,17 +1,6 @@
 Statistics-useR version 0.01
 ================
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
-
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
-
 INSTALLATION
 
 Before installing, make sure following environment variables exist.
@@ -20,6 +9,12 @@ export R_SHARE_DIR="/usr/share/R/share"
 export R_DOC_DIR="/usr/share/R/doc"
 export LD_LIBRARY_PATH=${R_HOME}/lib
 (R installation may be different with above path)
+
+By default, R_HOME should have "lib" and "include" directories which are necessary for compiling this module. If not, please find where "libR.so" and header files such as "R.h", "Rinternals.h" are located, then link the files as followes. 
+------------------------------------------
+ln -s libR.so-dir ${R_HOME}/lib 
+ln -s header-files-dir ${R_HOME}/include
+------------------------------------------
 
 To install this module type the following:
 
@@ -36,7 +31,7 @@ COPYRIGHT AND LICENCE
 
 Put the correct copyright and licence information here.
 
-Copyright (C) 2010 by Xin Zheng
+Copyright (C) 2011 by LIB@SAIC-Frederick
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.10.1 or,

@@ -14,6 +14,8 @@ Please keep in mind that Statistics::useR is currently just a layer of glue. Use
 
 Statistics::useR can start an embedded R and evaluate R commands. It also offers an object-based interface to R data. The R data can be output into Perl (integer vector, real number vector and string vector, also lists containing such vectors) as a hash structure which is called RData. The hash contains array refs to data. Keys in hash are names of list in R. For vector data, though, hash with only value will be put back into Perl. It can also introduce a hash into R list data. In one word, useR exchanges data with R through Perl-hash/R-list. Please see details below.
 
+Please open the "readme" file before installation.
+
 =head2 EXPORT
 
 Statistics::useR exports five methods to run embedded R.
@@ -68,9 +70,9 @@ Following codes create four tasks to calculate the matrix product of 'b' and 'a'
 	my $th3 = openTask('as.data.frame(b %*% a[,2801:4200])');
 	my $th4 = openTask('as.data.frame(b %*% a[,4201:5600])');
 
-Then close all the tasks. Please note that the tasks are opened together before get closed. Since B<closeTask> may block the main program, closing a task right after opening may actually equal to doing tasks sequentially.
+Then close all the tasks. Please note that the tasks are opened together before get closed. Since B<closeTask> may block the main program, closing a task right after opening it may actually equal to doing tasks sequentially.
 
-	my $o1 = closeTask($th1);
+	my $o1 = closeTask($th1); #closeTask returns a hash ref.
 	my $o2 = closeTask($th2);
 	my $o3 = closeTask($th3);
 	my $o4 = closeTask($th4);
@@ -231,7 +233,7 @@ Turn on a process to evaluate R commands. Given a scalar containing command stri
 
 =item B<closeTask>
 
-Turn off a process. Since it will block the main program, it is good to close tasks only after opening all needed tasks. Return an RData of the last evaluated expression in the R command.
+Turn off a process. Since it will block the main program, it is good to close tasks only after opening all needed tasks. Return a hash ref pointing to the value of returned RData of the last evaluated expression in the R command.
 
  my $res = closeTask($process);
 
@@ -284,7 +286,7 @@ R project website: http://www.r-project.org
 
 Xin Zheng, E<lt>xinzheng@cpan.orgE<gt>
 Any feedback will be greatly appreciated.
-It may help if you go to http://david.abcc.ncifcrf.gov/R .
+It may help if you go to http://david.abcc.ncifcrf.gov/manuscripts/R .
 
 =head1 COPYRIGHT AND LICENSE
 
